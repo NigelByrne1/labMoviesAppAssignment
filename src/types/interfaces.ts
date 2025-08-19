@@ -17,8 +17,11 @@ export interface BaseMovieProps {
     favourite?: boolean;
   }
 
+export type FilterOption = "title" | "genre";
+
  export interface BaseMovieListProps { 
     movies: BaseMovieProps[];
+    genre_ids?: number[];
   }   
 
 export interface MovieDetailsProps extends BaseMovieProps {
