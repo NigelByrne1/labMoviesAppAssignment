@@ -33,7 +33,7 @@ interface FilterMoviesCardProps {
   genreFilter: string;
 }
 
-const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreFilter }) => {
+const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreFilter, onUserInput }) => { //add onUserInput to destructured props 
   const [genres, setGenres] = useState([{ id: '0', name: "All" }])
 
   useEffect(() => {
