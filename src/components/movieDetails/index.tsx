@@ -9,7 +9,7 @@ import { MovieDetailsProps } from "../../types/interfaces";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from '../movieReviews'
+import MovieReviews from '../movieReview'
 
 const styles = {
     chipSet: {
