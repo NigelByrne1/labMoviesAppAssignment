@@ -55,13 +55,6 @@ export interface BaseMovieListProps {
   action: (m: BaseMovieProps) => React.ReactNode;
 }
 
-
-export interface Review{
-    id: string;
-    content: string
-    author: string
-}
-
 export interface GenreData {
   genres: {
     id: string;
@@ -75,3 +68,11 @@ export interface DiscoverMovies {
   total_results: number;
   results: BaseMovieProps[];
 }
+
+export interface Review {
+    author: string,
+    content: string,
+    agree: boolean,
+    rating: number,
+    movieId: number,
+  }
