@@ -15,6 +15,7 @@ export interface BaseMovieProps {
     revenue: number;
     vote_count: number;
     favourite?: boolean;
+    must_watch?: boolean;
   }
 
 export type FilterOption = "title" | "genre";
