@@ -12,6 +12,7 @@ import Spinner from "../components/spinner";
 import AddToMustWatchIcon from "../components/cardIcons/mustWatch";
 
 
+
 const titleFiltering = {
   name: "title",
   value: "",
