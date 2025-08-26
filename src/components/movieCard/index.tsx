@@ -15,6 +15,8 @@ import { BaseMovieProps } from "../../types/interfaces";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import Box from "@mui/material/Box";
 
 
 
@@ -23,6 +25,11 @@ const styles = {
   media: { height: 500 },
   avatar: {
     backgroundColor: "rgb(255, 0, 0)",
+    margin: 0.5,
+  },
+  mustWatch: {
+    backgroundColor: "rgb(255, 119, 0)",
+    margin: 0.5,
   },
 };
 
@@ -33,19 +40,28 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({movie, action}) => {
   const { favourites, addToFavourites } = useContext(MoviesContext);//NEW
+  const { mustWatch, addToMustWatch } = useContext(MoviesContext);
 
-const isFavourite = favourites.find((id) => id === movie.id)? true : false;//NEW
- 
+  const isFavourite = favourites.find((id) => id === movie.id)? true : false;//NEW
+  const isMustWatch = mustWatch.find((id) => id === movie.id)? true : false;
 
   return (
       <Card sx={styles.card}>
       <CardHeader
         avatar={
-          isFavourite ? (   //CHANGED
+          <Box>
+          {isFavourite ? (   //CHANGED
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
+          ) : null}
+          {isMustWatch ? (
+            <Avatar sx={styles.mustWatch}>
+              <PlaylistAddIcon />
+            </Avatar>
           ) : null
+          }
+          </Box>
         }
         title={
           <Typography variant="h5" component="p">
