@@ -9,7 +9,7 @@ import MovieFilterUI, {
 import { BaseMovieProps } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import AddToMustWatchIcon from "../components/cardIcons/mustWatch";
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
 
 
 
