@@ -10,6 +10,8 @@ import { DiscoverMovies, BaseMovieProps } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
+import { Box } from "@mui/material";
 
 
 
@@ -59,7 +61,12 @@ const HomePage: React.FC = () => {
         title="Discover Movies"
         movies={displayedMovies}
         action={(movie: BaseMovieProps) => {
-          return <AddToFavouritesIcon {...movie} />
+          return (
+            <Box>
+              <AddToMustWatchIcon {...movie} />
+              <AddToFavouritesIcon {...movie} />
+            </Box>
+          );
         }}
       />
       <MovieFilterUI

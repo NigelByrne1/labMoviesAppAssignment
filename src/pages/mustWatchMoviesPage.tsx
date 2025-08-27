@@ -9,8 +9,9 @@ import MovieFilterUI, {
   titleFilter,
   genreFilter,
 } from "../components/movieFilterUI";
-import RemoveFromMustWatchIcon from "../components/cardIcons/removeFromMustWatch";
+// import RemoveFromMustWatchIcon from "../components/cardIcons/removeFromMustWatch";
 import WriteReview from "../components/cardIcons/writeReview";
+import { Box } from "@mui/material";
 
 
 const titleFiltering = {
@@ -27,7 +28,7 @@ const genreFiltering = {
 const MustWatchMoviesPage: React.FC = () => {
   const { mustWatch: movieIds } = useContext(MoviesContext);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
-    [titleFiltering, genreFiltering]
+    [titleFiltering , genreFiltering]
   );
 
   // Create an array of queries and run them in parallel.
@@ -66,10 +67,9 @@ const MustWatchMoviesPage: React.FC = () => {
         movies={displayedMovies}
         action={(movie) => {
           return (
-            <>
-              <RemoveFromMustWatchIcon {...movie} />
+            <Box>
               <WriteReview {...movie} />
-            </>
+            </Box>
           );
         }}
       />

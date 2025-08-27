@@ -1,19 +1,29 @@
-import React from "react";
+import React, { MouseEvent } from "react";
+import IconButton from "@mui/material/IconButton";
 import RateReviewIcon from "@mui/icons-material/RateReview";
-import {BaseMovieProps} from "../../types/interfaces"
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {BaseMovieProps} from "../../types/interfaces";
 
-const WriteReviewIcon:React.FC<BaseMovieProps> = (movie) => {
-  return (
-    <Link
-    to={'/reviews/form'}
-    state={{
+const WriteReviewIcon: React.FC<BaseMovieProps> = (movie) => {
+  const navigate = useNavigate();
+
+  const onUserRequest = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    navigate('/reviews/form', {
+      state: {
         movieId: movie.id,
-      }}
-  >
-    <RateReviewIcon color="primary" fontSize="large" />
-  </Link>
+      }
+    });
+  };
+
+  return (
+    <IconButton
+      aria-label="write review"
+      onClick={onUserRequest}
+    >
+      <RateReviewIcon color="primary" fontSize="large" />
+    </IconButton>
   );
 };
 
-export default  WriteReviewIcon;
+export default WriteReviewIcon;

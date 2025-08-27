@@ -11,7 +11,7 @@ import MovieFilterUI, {
 } from "../components/movieFilterUI";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
-
+import { Box } from "@mui/material";
 
 const titleFiltering = {
   name: "title",
@@ -66,10 +66,10 @@ const FavouriteMoviesPage: React.FC = () => {
         movies={displayedMovies}
         action={(movie) => {
           return (
-            <>
+            <Box>
               <RemoveFromFavourites {...movie} />
               <WriteReview {...movie} />
-            </>
+            </Box>  
           );
         }}
       />
