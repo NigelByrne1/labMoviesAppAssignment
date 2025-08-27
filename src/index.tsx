@@ -13,7 +13,7 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import MustWatchMoviesPage from "./pages/mustWatchMoviesPage";
 import PopularMoviesPage from "./pages/popularMoviesPage";
-
+import TrendingMoviesPage from "./pages/trendingMoviesPage";
 
 
 
@@ -37,14 +37,15 @@ const App = () => {
           <MoviesContextProvider>
             <Routes>
               <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+              <Route path="/movies/popular" element={<PopularMoviesPage />} />
+              <Route path="/movies/trending" element={<TrendingMoviesPage />} />
               <Route path="/reviews/:id" element={<MovieReviewPage/>} />
               <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+              <Route path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
               <Route path="/movies/:id" element={<MoviePage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="*" element={<Navigate to="/" />} />
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
-              <Route path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
-              <Route path="/movies/popular" element={<PopularMoviesPage />} />
             </Routes>
           </MoviesContextProvider>
       </BrowserRouter>

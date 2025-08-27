@@ -31,13 +31,13 @@ const SiteHeader: React.FC = () => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Popular", path: "/movies/popular" }, 
+    { label: "Movies - Upcoming", path: "/movies/upcoming" },
+    { label: "Movies - Popular", path: "/movies/popular" },
+    { label: "Movies - Trending", path: "/movies/trending" },
     { label: "Favorites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
-    { label: "Upcoming", path: "/tvshow/upcoming" },
-    { label: "Popular", path: "/tvshow/popular" },
-    
+    { label: "TV Shows - Upcoming", path: "/tvshow/upcoming" },
+    { label: "TV Shows - Popular", path: "/tvshow/popular" },
   ];
 
   const handleMenuSelect = (pageURL: string) => {
