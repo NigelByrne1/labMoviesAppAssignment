@@ -37,11 +37,11 @@ const TemplateMoviePage: React.FC<TemplateMoviePageProps> = ({movie, children}) 
             <MovieHeader {...movie} />
             
             {limitedImages[0] && (
-                <div style={{ padding: "20px" }}>
+                <div style={{ padding: "20px", display: 'flex', justifyContent: 'center' }}>
                     <img
                         src={`https://image.tmdb.org/t/p/w500/${limitedImages[0].file_path}`}
                         alt={movie.title}
-                        style={{ width: '100%', maxHeight: '500px', objectFit: 'cover' }}
+                        style={{ maxWidth: '300px', height: '15hv', objectFit: 'contain' }}
                     />
                 </div>
             )}
@@ -50,17 +50,15 @@ const TemplateMoviePage: React.FC<TemplateMoviePageProps> = ({movie, children}) 
                 {children}
             </div>
             
-            <div style={{ padding: "20px" }}>
-                <div style={{ display: 'flex', overflowX: 'auto', gap: '16px' }}>  
-                    {limitedImages.map((image) => (
-                        <img
-                            key={image.file_path}
-                            src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                            alt={movie.title}
-                            style={{ width: '200px', height: '200px', objectFit: 'cover' }}
-                        />
-                    ))}
-                </div>
+            <div style={{ padding: "20px", display: 'flex', overflowX: 'auto', gap: '16px' }}>
+                {limitedImages.map((image) => (
+                    <img
+                        key={image.file_path}
+                        src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+                        alt={movie.title}
+                        style={{ width: '200px', height: '200px', objectFit: 'cover' }}
+                    />
+                ))}
             </div>
         </>
     );

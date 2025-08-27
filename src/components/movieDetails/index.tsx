@@ -37,6 +37,8 @@ const MovieDetails: React.FC<MovieDetailsProps> = (movie) => {
 
     return (
         <>
+        <div style={{ textAlign: 'center' }}>
+
              <Typography variant="h4" component="h3">
                 {movie.title}
             </Typography>
@@ -79,6 +81,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = (movie) => {
             <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <MovieReviews {...movie} />
             </Drawer>
+        </div>
         </>
     );
 };

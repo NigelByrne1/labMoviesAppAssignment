@@ -27,13 +27,17 @@ const SiteHeader: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
+//todo add menu dropdown for movies and tv shows
+
   const menuOptions = [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Popular", path: "/movies/popular" }, 
     { label: "Favorites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
- 
+    { label: "Upcoming", path: "/tvshow/upcoming" },
+    { label: "Popular", path: "/tvshow/popular" },
+    
   ];
 
   const handleMenuSelect = (pageURL: string) => {
