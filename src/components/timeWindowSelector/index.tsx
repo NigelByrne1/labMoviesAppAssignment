@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent } from "react";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
@@ -18,20 +17,20 @@ const TimeWindowSelector: React.FC<TimeWindowSelectorProps> = ({
   currentTimeWindow, 
   onTimeWindowChange 
 }) => {
+  const defaultTimeWindow = currentTimeWindow || 'week';
+
   const defaultValues = {
     defaultValues: {
-      timeWindow: currentTimeWindow,
+      timeWindow: defaultTimeWindow,
     }
   };
 
   const {
     control,
-    formState: { errors },
     handleSubmit,
-    reset,
   } = useForm<TimeWindow>(defaultValues);
 
-  const [timeWindow, setTimeWindow] = useState(currentTimeWindow);
+  const [timeWindow, setTimeWindow] = useState(defaultTimeWindow);
 
   const handleTimeWindowChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newTimeWindow = event.target.value;
@@ -45,10 +44,6 @@ const TimeWindowSelector: React.FC<TimeWindowSelectorProps> = ({
 
   return (
     <Box component="div" sx={styles.root}>
-      <Typography component="h2" variant="h3">
-        Select Time Period
-      </Typography>
-
       <form style={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
         <Controller
           control={control}
@@ -56,13 +51,13 @@ const TimeWindowSelector: React.FC<TimeWindowSelectorProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
+              helperText="Choose your time period"
               id="select-timeWindow"
               select
               variant="outlined"
-              label="Time Period Select"
-              value={timeWindow}
+              value={timeWindow || ''} //CANT BE UNDEFINED
               onChange={handleTimeWindowChange}
-              helperText="Choose your time period"
+              
               sx={styles.textField}
             >
               {timeWindows.map((option) => (
@@ -73,31 +68,6 @@ const TimeWindowSelector: React.FC<TimeWindowSelectorProps> = ({
             </TextField>
           )}
         />
-
-        <Box>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={styles.submit}
-          >
-            Apply
-          </Button>
-          <Button
-            type="reset"
-            variant="contained"
-            color="secondary"
-            sx={styles.submit}
-            onClick={() => {
-              reset({
-                timeWindow: currentTimeWindow,
-              });
-              setTimeWindow(currentTimeWindow);
-            }}
-          >
-            Reset
-          </Button>
-        </Box>
       </form>
     </Box>
   );

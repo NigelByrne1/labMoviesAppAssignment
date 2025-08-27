@@ -29,7 +29,7 @@ const genreFiltering = {
 
 const TrendingMoviesPage: React.FC = () => {
 
-  const [timeWindow, setTimeWindow] = useState("week");
+  const [timeWindow, setTimeWindow] = useState<string>('week');
 
   const { data: movies, error, isLoading, isError } = useQuery<BaseMovieProps[], Error>(
     ["trending", timeWindow],
@@ -63,10 +63,12 @@ const TrendingMoviesPage: React.FC = () => {
 
   return (
     <>
+    <TimeWindowSelector 
+      currentTimeWindow={timeWindow}
+      onTimeWindowChange={setTimeWindow}
+    />
+
       <PageTemplate
-        TimeWindowSelector={TimeWindowSelector}
-        timeWindow={timeWindow}
-        onTimeWindowChange={setTimeWindow}
         title="Trending Movies"
         movies={displayedMovies}
         action={(movie: BaseMovieProps) => {
@@ -74,11 +76,14 @@ const TrendingMoviesPage: React.FC = () => {
             <Box>
               <AddToMustWatchIcon {...movie} />
               <AddToFavouritesIcon {...movie} />
-              
             </Box>
           );
         }}
       /> 
+
+      
+
+
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}
