@@ -9,7 +9,7 @@ import MovieFilterUI, {
   titleFilter,
   genreFilter,
 } from "../components/movieFilterUI";
-// import RemoveFromMustWatchIcon from "../components/cardIcons/removeFromMustWatch";
+import RemoveFromMustWatchIcon from "../components/cardIcons/removeFromMustWatch";
 import WriteReview from "../components/cardIcons/writeReview";
 import { Box } from "@mui/material";
 
@@ -68,6 +68,7 @@ const MustWatchMoviesPage: React.FC = () => {
         action={(movie) => {
           return (
             <Box>
+              <RemoveFromMustWatchIcon {...movie} />
               <WriteReview {...movie} />
             </Box>
           );
