@@ -27,7 +27,21 @@ Check out the new trending Movies Page. There is a time window selector componan
 
 The new **Time Window Selector** component on the Trending Movies page lets you choose between viewing trending movies for the "day" or the "week". When you select a different time window, the page automatically refreshes the list of trending movies by dynamically updating the API call—no need to reload the page manually! This makes it easy to explore what's trending right now or over the past week with a single click.
 
+### 7. Pagination with Functional Page Arrows
 
+The page arrows at the top of each movie list (which were previously just for show) are now fully functional! You can now use the arrows at both the top and the new, stylish bar at the bottom of each page to navigate forward or backward through up to 20 pages of movies. Click the arrows to instantly load more movies—no page reload needed. Enjoy smooth and easy browsing as you explore a much larger selection of movies!
+
+### Sample Feature
+Please check out this new feature - try doing X and you will see Y happen (placeholder text).
+
+### Sample Feature
+Please check out this new feature - try doing X and you will see Y happen (placeholder text).
+
+### Sample Feature
+Please check out this new feature - try doing X and you will see Y happen (placeholder text).
+
+### Sample Feature
+Please check out this new feature - try doing X and you will see Y happen (placeholder text).
 
 ### Sample Feature
 Please check out this new feature - try doing X and you will see Y happen (placeholder text).

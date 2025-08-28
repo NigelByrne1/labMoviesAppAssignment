@@ -28,13 +28,13 @@ const genreFiltering = {
 };
 
 const TrendingMoviesPage: React.FC = () => {
-
   const [timeWindow, setTimeWindow] = useState<string>('week');
+  const [page, setPage] = useState(1);
 
   const { data: movies, error, isLoading, isError } = useQuery<BaseMovieProps[], Error>(
-    ["trending", timeWindow],
-    () => getTrendingMovies(timeWindow)
-    );
+    ["trending", timeWindow, page],
+    () => getTrendingMovies(timeWindow, page)
+  );
 
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [titleFiltering, genreFiltering]
@@ -59,7 +59,13 @@ const TrendingMoviesPage: React.FC = () => {
     setFilterValues(updatedFilterSet);
   };
 
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
   const displayedMovies = filterFunction(movies || []);
+  const totalPages = 20; 
 
   return (
     <>
@@ -69,8 +75,11 @@ const TrendingMoviesPage: React.FC = () => {
     />
 
       <PageTemplate
-        title="Trending Movies"
+        title={`(${timeWindow}) - Trending Movies`}
         movies={displayedMovies}
+        currentPage={page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
         action={(movie: BaseMovieProps) => {
           return (
             <Box>

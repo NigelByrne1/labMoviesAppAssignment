@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import PageTemplate from "../components/templateMovieListPage";
-import { getUpcomingMovies } from "../api/tmdb-api"; //import upcomg movies
+import { getUpcomingMovies } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, {
   titleFilter,
@@ -12,8 +12,6 @@ import Spinner from "../components/spinner";
 import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import { Box } from "@mui/material";
-
-
 
 const titleFiltering = {
   name: "title",
@@ -27,8 +25,13 @@ const genreFiltering = {
 };
 
 const UpcomingMoviesPage: React.FC = () => {
+  const [page, setPage] = useState(1);
 
-  const { data: movies, error, isLoading, isError } = useQuery<BaseMovieProps[], Error>("upcoming", getUpcomingMovies);
+  const { data: movies, error, isLoading, isError } = useQuery<BaseMovieProps[], Error>(
+    ["upcoming", page],
+    () => getUpcomingMovies(page)
+  );
+
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [titleFiltering, genreFiltering]
   );
@@ -41,7 +44,6 @@ const UpcomingMoviesPage: React.FC = () => {
     return <h1>{error.message}</h1>;
   }
 
-  
   const changeFilterValues = (type: string, value: string) => {
     const changedFilter = { name: type, value: value };
     const updatedFilterSet =
@@ -51,13 +53,22 @@ const UpcomingMoviesPage: React.FC = () => {
     setFilterValues(updatedFilterSet);
   };
 
-  const displayedMovies = filterFunction(movies || []);
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
 
+  const displayedMovies = filterFunction(movies || []);
+  const totalPages = 20; 
+
+  
   return (
     <>
       <PageTemplate
         title="Upcoming Movies"
         movies={displayedMovies}
+        currentPage={page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
         action={(movie: BaseMovieProps) => {
           return (
             <Box>
