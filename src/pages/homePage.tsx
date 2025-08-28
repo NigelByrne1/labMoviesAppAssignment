@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { getMovies } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
@@ -9,7 +9,7 @@ import MovieFilterUI, {
 import { DiscoverMovies, BaseMovieProps } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
 import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
 import { Box } from "@mui/material";
 
@@ -27,8 +27,13 @@ const genreFiltering = {
 };
 
 const HomePage: React.FC = () => {
+  const [page, setPage] = useState(1);
 
-  const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("discover", getMovies);
+  const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>(
+    ["discover", page], 
+    () => getMovies(page)
+  );
+  
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [titleFiltering, genreFiltering]
   );
@@ -41,7 +46,6 @@ const HomePage: React.FC = () => {
     return <h1>{error.message}</h1>;
   }
 
-
   const changeFilterValues = (type: string, value: string) => {
     const changedFilter = { name: type, value: value };
     const updatedFilterSet =
@@ -51,15 +55,22 @@ const HomePage: React.FC = () => {
     setFilterValues(updatedFilterSet);
   };
 
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
   const movies = data ? data.results : [];
   const displayedMovies = filterFunction(movies);
-
+  const totalPages = data ? 20 : 1; 
 
   return (
     <>
       <PageTemplate
         title="Discover Movies"
         movies={displayedMovies}
+        currentPage={page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
         action={(movie: BaseMovieProps) => {
           return (
             <Box>
@@ -77,4 +88,5 @@ const HomePage: React.FC = () => {
     </>
   );
 };
+
 export default HomePage;

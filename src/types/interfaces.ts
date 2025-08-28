@@ -50,6 +50,9 @@ export interface MoviePageProps {
 export interface BaseMovieListProps {
   movies: BaseMovieProps[];
   action: (m: BaseMovieProps) => React.ReactNode;
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (newPage: number) => void;
 }
 
 export interface GenreData {
