@@ -78,9 +78,32 @@ export interface Review {
   }
 
   export interface TimeWindow {
-    timeWindow: string;
+    timeWindow: string; 
+  } 
+
+  export interface BaseTVShowProps {
+    name: string;
+    id: number;
+    poster_path?: string;
+    vote_average: number;
+    vote_count: number;
+    first_air_date: string;
+    popularity: number;
+    genre_ids: number[];
+    original_language: string;
+    overview: string;
+    origin_country: string[];
+    favourite?: boolean;
+    must_watch?: boolean;
   }
 
+export interface BaseTVShowListProps {
+  tvShows: BaseTVShowProps[];
+  action: (tvShow: BaseTVShowProps) => React.ReactNode;
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (newPage: number) => void;
+}
 
 
 

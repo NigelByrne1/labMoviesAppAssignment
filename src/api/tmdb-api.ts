@@ -90,4 +90,50 @@ export const getMovies = (page: number = 1) => {
       .then(json => json.results);
   };
 
+export const getUpcomingTVShows = (page: number = 1) => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/on_the_air?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${page}`
+  )
+    .then(res => res.json())
+    .then(json => json.results);
+};
+
+export const getPopularTVShows = (page: number = 1) => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${page}`
+  )
+    .then(res => res.json())
+    .then(json => json.results);
+};
+
+export const getTrendingTVShows = (timeWindow: string = 'week', page: number = 1) => {
+  return fetch(
+    `https://api.themoviedb.org/3/trending/tv/${timeWindow}?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${page}`
+  )
+    .then(res => res.json())
+    .then(json => json.results);
+};
+
+export const getTopRatedTVShows = (page: number = 1) => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${page}`
+  )
+    .then(res => res.json())
+    .then(json => json.results);
+};
+
+export const getTVShow = (id: string) => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error(`Failed to get TV show data. Response status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .catch((error) => {
+    throw error
+  });
+};
+
   

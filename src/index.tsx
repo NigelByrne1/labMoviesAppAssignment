@@ -16,8 +16,13 @@ import PopularMoviesPage from "./pages/popularMoviesPage";
 import TrendingMoviesPage from "./pages/trendingMoviesPage";
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
-import { useColorScheme } from '@mui/material/styles';
-
+import UpcomingTVShowsPage from "./pages/upcomingTVShowsPage";
+import PopularTVShowsPage from "./pages/popularTVShowsPage";
+import TrendingTVShowsPage from "./pages/trendingTVShowsPage";
+import TopRatedTVShowsPage from "./pages/topRatedTVShowsPage";
+import TVShowsContextProvider from "./contexts/tvShowsContext";
+import FavouriteTVShowsPage from "./pages/favouriteTVShowsPage";
+import MustWatchTVShowsPage from "./pages/mustWatchTVShowsPage";
 
 
 
@@ -44,18 +49,26 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <SiteHeader />
           <MoviesContextProvider>
-            <Routes>
-              <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-              <Route path="/movies/popular" element={<PopularMoviesPage />} />
-              <Route path="/movies/trending" element={<TrendingMoviesPage />} />
-              <Route path="/reviews/:id" element={<MovieReviewPage/>} />
-              <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
-              <Route path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
-              <Route path="/movies/:id" element={<MoviePage />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="*" element={<Navigate to="/" />} />
-              <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
-            </Routes>
+            <TVShowsContextProvider>
+              <Routes>
+                <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+                <Route path="/movies/popular" element={<PopularMoviesPage />} />
+                <Route path="/movies/trending" element={<TrendingMoviesPage />} />
+                <Route path="/reviews/:id" element={<MovieReviewPage/>} />
+                <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+                <Route path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
+                <Route path="/movies/:id" element={<MoviePage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+                <Route path="/tvshow/upcoming" element={<UpcomingTVShowsPage />} />
+                <Route path="/tvshow/popular" element={<PopularTVShowsPage />} />
+                <Route path="/tvshow/trending" element={<TrendingTVShowsPage />} />
+                <Route path="/tvshow/toprated" element={<TopRatedTVShowsPage />} />
+                <Route path="/tvshow/favourites" element={<FavouriteTVShowsPage />} />
+                <Route path="/tvshow/mustwatch" element={<MustWatchTVShowsPage />} />
+              </Routes>
+            </TVShowsContextProvider>
           </MoviesContextProvider>
         </ThemeProvider>
       </BrowserRouter>

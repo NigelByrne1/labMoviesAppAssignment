@@ -11,7 +11,7 @@ import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ThemeToggle from "../themeToggle";
+// import ThemeToggle from "../themeToggle";
 
 const styles = {
     title: {
@@ -39,6 +39,10 @@ const SiteHeader: React.FC = () => {
     { label: "Must Watch", path: "/movies/mustwatch" },
     { label: "TV Shows - Upcoming", path: "/tvshow/upcoming" },
     { label: "TV Shows - Popular", path: "/tvshow/popular" },
+    { label: "TV Shows - Trending", path: "/tvshow/trending" },
+    { label: "TV Shows - Top Rated", path: "/tvshow/toprated" },
+    { label: "TV Shows - Favorites", path: "/tvshow/favourites" },
+    { label: "TV Shows - Must Watch", path: "/tvshow/mustwatch" },
   ];
 
   const handleMenuSelect = (pageURL: string) => {
@@ -56,7 +60,7 @@ const SiteHeader: React.FC = () => {
           <Typography variant="h4" sx={styles.title}>
             TMDB Client
           </Typography>
-          <ThemeToggle />
+          {/*<ThemeToggle />*/}
           <Typography variant="h6" sx={styles.title}>
             All you ever wanted to know about Movies!
           </Typography>
