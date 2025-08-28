@@ -49,4 +49,8 @@ I attempted to implement a dark/light theme toggle by adapting the example from 
 ### Favourite/MustWatch TV pages and functionality 
 I attempted to add favourite/mustwatch functionality for TV shows, similar to what I have for movies. The pages mostly work, and TV shows can sometimes be favourited or added to must watch, but after doing this, the movies favourites page breaks. I suspect this is because I copied the movie pages and adapted them for TV shows, but I must have missed something in the process, causing the logic for movies and TV shows to get mixed up.
 
+### Attempted Category Dropdown Menu
+
+I tried several times to change the main navigation menu into a simple dropdown with categories (e.g., "Movies", "TV Shows", etc.), but found the Material UI documentation confusing and overly complex for this use case. There are many advanced menu options, but I just wanted a basic dropdown menu for navigation.
+
 
