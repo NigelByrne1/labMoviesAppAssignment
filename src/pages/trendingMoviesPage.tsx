@@ -75,7 +75,7 @@ const TrendingMoviesPage: React.FC = () => {
     />
 
       <PageTemplate
-        title={`(${timeWindow}) - Trending Movies`}
+        title={`(${timeWindow.toUpperCase()}) - Trending Movies`}
         movies={displayedMovies}
         currentPage={page}
         totalPages={totalPages}

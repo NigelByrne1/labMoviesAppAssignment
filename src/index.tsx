@@ -14,6 +14,9 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import MustWatchMoviesPage from "./pages/mustWatchMoviesPage";
 import PopularMoviesPage from "./pages/popularMoviesPage";
 import TrendingMoviesPage from "./pages/trendingMoviesPage";
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import { useColorScheme } from '@mui/material/styles';
 
 
 
@@ -28,12 +31,18 @@ const queryClient = new QueryClient({
   },
 });
 
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <SiteHeader />
+        <ThemeProvider theme={theme}>
+          <SiteHeader />
           <MoviesContextProvider>
             <Routes>
               <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
@@ -48,6 +57,7 @@ const App = () => {
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
             </Routes>
           </MoviesContextProvider>
+        </ThemeProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
