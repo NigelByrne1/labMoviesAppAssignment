@@ -26,6 +26,7 @@ const Header: React.FC<HeaderProps> = (headerProps) => {
     const title = headerProps.title
     const currentPage = headerProps.currentPage
     const totalPages = headerProps.totalPages
+    const onPageChange = headerProps.onPageChange
 
     const handleBack = () => {
         if (currentPage > 1) {
